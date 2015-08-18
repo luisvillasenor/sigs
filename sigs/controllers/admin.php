@@ -26,7 +26,7 @@ class Admin extends CI_Controller {
 	
 	public function index(){
 		
-		//echo sha1('BTR%08nt'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
+		//echo sha1('test01'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
 		
 		if ( isset($_SESSION['username']) == NULL){
 			$this->load->view('header');
@@ -84,42 +84,42 @@ class Admin extends CI_Controller {
 						$_SESSION['rol'] = 'Candidato';
 						$_SESSION['geo'] = $geo;
 						$_SESSION['status'] = $isActive;
-						redirect(base_url('dashboard/'));
+						redirect(base_url('dashboard/index'));
 						break;
 					case 'Dirigencia':
 						$_SESSION['username'] = $clean_email_address;
 						$_SESSION['rol'] = 'Dirigencia';
 						$_SESSION['geo'] = $geo;
 						$_SESSION['status'] = $isActive;
-						redirect(base_url('dashboard/'));
+						redirect(base_url('dashboard/index'));
 						break;
 					case 'Superadmin':
 						$_SESSION['username'] = $clean_email_address;
 						$_SESSION['rol'] = 'Superadmin';
 						$_SESSION['geo'] = $geo;
 						$_SESSION['status'] = $isActive;
-						redirect(base_url('home/'));
+						redirect(base_url('home/index'));
 						break;
 					case 'Administrador':
 						$_SESSION['username'] = $clean_email_address;
 						$_SESSION['rol'] = 'Administrador';
 						$_SESSION['geo'] = $geo;
 						$_SESSION['status'] = $isActive;
-						redirect(base_url('home/'));
+						redirect(base_url('home/index'));
 						break;
 					case 'Capturista':
 						$_SESSION['username'] = $clean_email_address;
 						$_SESSION['rol'] = 'Capturista';
 						$_SESSION['geo'] = $geo;
 						$_SESSION['status'] = $isActive;
-						redirect(base_url('home/'));
+						redirect(base_url('home/index'));
 						break;
 					case 'Supervision':
 						$_SESSION['username'] = $clean_email_address;
 						$_SESSION['rol'] = 'Supervision';
 						$_SESSION['geo'] = $geo;
 						$_SESSION['status'] = $isActive;
-						redirect(base_url('home/'));
+						redirect(base_url('home/index'));
 						break;
 					default:
 						echo '<div class="alert alert-block alert-error span10">';

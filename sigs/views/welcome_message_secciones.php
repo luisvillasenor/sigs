@@ -27,6 +27,7 @@
 			<th>Colonia</th>
 			<th>Dis. Federal</th>
 			<th>Dis. Uninom</th>
+			<th>Dis. Nuevos</th>
 			<th>Municipios</th>
 			<?php foreach ($get_all_secciones as $item):?> 
 			  	<tr>
@@ -34,10 +35,10 @@
 			  		<td><?php echo $item->colonia; ?></td>
 			  		<td><?php echo $item->df; ?></td>
 			  		<td><?php echo $item->distritoUni; ?></td>
+			  		<td></td>
 			  		<td><?php echo $item->municipio; ?></td>
 			  	</tr>
 			<?php endforeach;?>
-			
 		</table>
   </div>
 </div> <!-- /container -->

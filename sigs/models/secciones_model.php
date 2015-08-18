@@ -76,12 +76,6 @@ class Secciones_model extends CI_Model
                 $query = $this->db->get('secciones');
                 return $query->result();
                 break;
-                
-            default:
-                # code...
-                $query = $this->db->get('secciones');
-                return $query->result();
-                break;
         }
     }
 
@@ -141,12 +135,6 @@ class Secciones_model extends CI_Model
                 # code...
                 $this->db->order_by('colonia','asc');
                 //$this->db->where('df',GEO);
-                $query = $this->db->get('secciones');
-                return $query->result();
-                break;
-                
-            default:
-                # code...
                 $query = $this->db->get('secciones');
                 return $query->result();
                 break;
@@ -226,33 +214,30 @@ class Secciones_model extends CI_Model
                 $query = $this->db->get('secciones');
                 return $query->result();
                 break;
-            default:
-                $this->db->like('colonia', $colonia);
-                $this->db->order_by('colonia', 'ASC');
-                $query = $this->db->get('secciones');
-                return $query->result();
-                break;
         }
 
     }
 
     function insert_entry()
     {
-        $data['seccion']   = $_POST['seccion'];
-        $data['dis_id'] = $_POST['dis_id'];
-
+        $data['municipio']       = $_POST['municipio'];
+        $data['df']              = $_POST['df'];
+        $data['distritoUni']     = $_POST['distritoUni'];
+        $data['distritoNuevo']   = $_POST['distritoNuevo'];
+        $data['seccion']         = $_POST['seccion'];
+        $data['colonia']         = $_POST['colonia'];
         $this->db->insert('secciones', $data);
     }
 
     function update_entry()
     {
-        $data['id']           = $_POST['id'];
-        $data['municipio']    = $_POST['municipio'];
-        $data['df']           = $_POST['df'];
-        $data['distritoUni']  = $_POST['distritoUni'];
-        $data['seccion']      = $_POST['seccion'];
-        $data['colonia']      = $_POST['colonia'];
-
+        $data['id']              = $_POST['id'];
+        $data['municipio']       = $_POST['municipio'];
+        $data['df']              = $_POST['df'];
+        $data['distritoUni']     = $_POST['distritoUni'];
+        $data['distritoNuevo']   = $_POST['distritoNuevo'];
+        $data['seccion']         = $_POST['seccion'];
+        $data['colonia']         = $_POST['colonia'];
         $this->db->update('secciones', $data, array('id' => $_POST['id']));
     }
 
