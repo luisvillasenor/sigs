@@ -26,11 +26,6 @@ class Home extends CI_Controller {
 			redirect(base_url('admin/logout'), 'refresh');
 		}
 
-	}
-
-	public function index()
-	{
-
 		define('ROL',$_SESSION['rol']);
 	    define('COMPONENTE',$this->uri->segment(1));
 	    define('USER',strstr($_SESSION['username'],'@',true));
@@ -38,20 +33,22 @@ class Home extends CI_Controller {
 	    define('GEO',$_SESSION['geo']);
 
   		$this->load->model('permisos_model');
+	}
 
+	public function index()
+	{
 		$recurso = $this->uri->segment(2);
+		// obtiene el controler y metodo del segmento URL
 		$acceso = $this->permisos_model->verify_componente(ROL,COMPONENTE);
 		$resource = $this->permisos_model->verify_recursos(ROL,COMPONENTE,$recurso);
 
-		if ($acceso == true) {
-			if (empty($resource)) {
+		if ($acceso == true AND $resource == true) {
  		  	$data['componentes'] = $this->permisos_model->componentes(ROL);
 			$this->load->view('header');
 			$this->load->view('navbar-default',$data);
 			$this->load->view('enDesarrollo');
-			}else { die("You do not have permissions to read this resource"); }					    
+			//$this->load->view('footer');				
 		} else { die("You do not have permissions to read this resource"); }
-
 	}			
 }
 /* End of file welcome.php */

@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
-<div class="row well">	    
+<div class="row">	    
 <div id="navbar" class="navbar-collapse collapse">
 <ul class="nav navbar-nav navbar-left">
 <li>
@@ -19,26 +19,31 @@
 </div><!--/.nav-collapse -->
 </div>
 
-  <div class="row well">
+  <div class="">
 	
-		<table class="table table-condensed">
+		<table class="table">
 			<tr>
 			<th>Seccion</th>
 			<th>Colonia</th>
 			<th>Dis. Federal</th>
 			<th>Dis. Uninom</th>
-			<th>Dis. Nuevos</th>
+			<th>Dis. Nuevo</th>
 			<th>Municipios</th>
-			<?php foreach ($get_all_secciones as $item):?> 
+			<th></th>
+			<?php foreach ($get_all_secciones as $item):?>
+			<form>
 			  	<tr>
-			  		<td><?php echo $item->seccion; ?></td>
-			  		<td><?php echo $item->colonia; ?></td>
-			  		<td><?php echo $item->df; ?></td>
-			  		<td><?php echo $item->distritoUni; ?></td>
-			  		<td></td>
-			  		<td><?php echo $item->municipio; ?></td>
+			  		<td><input size="3" value="<?php echo $item->seccion; ?>"></td>
+			  		<td><textarea><?php echo $item->colonia; ?></textarea></td>
+			  		<td><input size="2" value="<?php echo $item->df; ?>"></td>
+			  		<td><input size="5" value="<?php echo $item->distritoUni; ?>"></td>
+			  		<td><input size="2" value="<?php echo $item->distritoNuevo; ?>"></td>
+			  		<td><textarea><?php echo $item->municipio; ?></textarea></td>
+			  		<td><button>Guardar</button></td>
 			  	</tr>
+		  	</form> 
 			<?php endforeach;?>
+			
 		</table>
   </div>
 </div> <!-- /container -->

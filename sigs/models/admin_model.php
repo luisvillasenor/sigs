@@ -1,5 +1,4 @@
 <?php
-
 class Admin_model extends CI_Model {
 
   function __construct()
@@ -11,7 +10,7 @@ class Admin_model extends CI_Model {
 
   function verify_user($clean_email_address, $clean_password){
 
-    //$this->db->select('*');
+    $this->db->select('*');
     $this->db->where('email_address',$clean_email_address);
     $this->db->where('password',sha1($clean_password));
     $this->db->limit(1);
@@ -19,9 +18,11 @@ class Admin_model extends CI_Model {
     $q = $this->db->get('users');
 
     if ( $q->num_rows > 0 ){
+
       return true;
       //return $q->row();
     } else {
+
         return false;
     }
 
@@ -29,7 +30,7 @@ class Admin_model extends CI_Model {
 
   function verify_active($clean_email_address){
 
-    //$this->db->select('*');
+    $this->db->select('*');
     $this->db->where('email_address',$clean_email_address);
     $this->db->where('status', 1);
     $this->db->limit(1);
@@ -48,7 +49,7 @@ class Admin_model extends CI_Model {
 
   function verify_rol($clean_email_address, $clean_password){
 
-    //$this->db->select('*');
+    $this->db->select('*');
     $this->db->where('email_address',$clean_email_address);
     $this->db->where('password',sha1($clean_password));
     $this->db->limit(1);
@@ -56,6 +57,7 @@ class Admin_model extends CI_Model {
     $q = $this->db->get('users');
 
     if ( $q->num_rows > 0 ){
+
       return $q->row();
     }
 

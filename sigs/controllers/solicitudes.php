@@ -81,9 +81,7 @@ class Solicitudes extends CI_Controller {
 		$acceso = $this->permisos_model->verify_componente(ROL,COMPONENTE);
 		$resource = $this->permisos_model->verify_recursos(ROL,COMPONENTE,$recurso);
 
-		if ($acceso == true) {
-			if (!empty($resource)) {
-
+		if ($acceso == true AND $resource == true) {
 			$data['componentes'] = $this->permisos_model->componentes(ROL);
  		  	// Carga componentes permitidos
  		  	$this->load->model('ciudadanos_model');
@@ -99,7 +97,6 @@ class Solicitudes extends CI_Controller {
 			$this->load->view('navbar-default',$data);
 			$this->load->view('nuevo_solicitud',$data);
 			$this->load->view('footer');		
-			}else { die("You do not have permissions to read this resource"); }			
 		} else { die("You do not have permissions to read this resource"); }
 	}
 

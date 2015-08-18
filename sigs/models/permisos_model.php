@@ -61,11 +61,11 @@ class Permisos_model extends CI_Model {
   }
 
   public function verify_recursos($rol,$componente,$recurso){
-    //$this->db->select('*');
+    $this->db->select('*');
     $this->db->where('rol',$rol);
     $this->db->where('componente',$componente);
     $this->db->where('recurso',$recurso);
-    $this->db->where('permiso','1');
+    $this->db->where('permiso',1);
     $this->db->limit(1);
     $q = $this->db->get('permisos');
     if ( $q->num_rows >= 0 ){

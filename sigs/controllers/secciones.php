@@ -75,6 +75,19 @@ class Secciones extends CI_Controller {
 		} else { die("You do not have permissions to read this resource"); }
 	}
 
+	public function actualizar()
+	{
+ 		  	// Carga componentes permitidos		
+			$this->load->model('secciones_model');
+			$colonia = $this->input->post('colonia');
+			$data['get_one'] = $this->secciones_model->get_one($colonia);
+			//Obtiene el registro en la base de datos
+			$this->load->view('header');
+			$this->load->view('navbar-default',$data);
+			$this->load->view('seccion_view',$data);
+			$this->load->view('footer');		
+
+	}
 
 
 }

@@ -1,11 +1,11 @@
 <?PHP 
 header("Content-type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=exportar_corte.xls")
+header("Content-Disposition: attachment; filename=exportar_corte_filtrado.xls")
 ?>
 
 <html>
 
-    <div class="row well">
+<div class="row well">
   <h2>Corte de Solicitudes</h2> 
   <table class="table table-condensed">
     <tr>
@@ -71,5 +71,5 @@ header("Content-Disposition: attachment; filename=exportar_corte.xls")
       <?php } ?>
     
   </table>
-  </div>
+</div>
 </html>

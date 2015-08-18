@@ -45,31 +45,31 @@ class Ciudadanos extends CI_Controller {
 		if ($acceso == true  ) {
 			if (!empty($resource)) {
 			
-	 		  	$data['componentes'] = $this->permisos_model->componentes(ROL);
-	 		  	// Carga componentes permitidos
-	 		  	$this->load->model('ciudadanos_model');
-	 		  	$this->load->model('secciones_model');
+ 		  	$data['componentes'] = $this->permisos_model->componentes(ROL);
+ 		  	// Carga componentes permitidos
+ 		  	$this->load->model('ciudadanos_model');
+ 		  	$this->load->model('secciones_model');
 
-	 		  	$config["base_url"] = base_url() . "ciudadanos/index";
-		        $config["total_rows"] = $this->ciudadanos_model->record_count();
-		        $config["per_page"] = 10;
-		        $config["uri_segment"] = 3;
-		 
-		        $this->pagination->initialize($config);
-		 
-		        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		        $data['results'] = $this->ciudadanos_model->fetch_rows($config["per_page"], $page);
-		        $data['links'] = $this->pagination->create_links();
+ 		  	$config["base_url"] = base_url() . "ciudadanos/index";
+	        $config["total_rows"] = $this->ciudadanos_model->record_count();
+	        $config["per_page"] = 10;
+	        $config["uri_segment"] = 3;
+	 
+	        $this->pagination->initialize($config);
+	 
+	        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+	        $data['results'] = $this->ciudadanos_model->fetch_rows($config["per_page"], $page);
+	        $data['links'] = $this->pagination->create_links();
 
-				$data['get_all_secciones'] = $this->secciones_model->get_for_select();
-				//$data['get_all'] = $this->ciudadanos_model->get_all();
-				$this->load->view('header');
-				$this->load->view('navbar-default',$data);
-				$this->load->view('welcome_message_ciudadanos',$data);
-				$this->load->view('footer');
+			$data['get_all_secciones'] = $this->secciones_model->get_for_select();
+			//$data['get_all'] = $this->ciudadanos_model->get_all();
+			$this->load->view('header');
+			$this->load->view('navbar-default',$data);
+			$this->load->view('welcome_message_ciudadanos',$data);
+			$this->load->view('footer');
 
-			}else { die("USTED NO TIRNE PERMISOS AL CONTROLER PARA ACCESAR, CONTACTE AL ADMINISTRADOR DEL SISTEMA."); }		
-		} else { die("USTED NO TIENE PERMISOS AL METODO PARA VER ESTE MODULO, CONTACTE A LA ADMINISTRADOR DEL SISTEMA"); }
+			}else { die("You do not have permissions to read this resource"); }		
+		} else { die("You do not have permissions to read this resource"); }
 	}
 
 	public function create()
@@ -134,7 +134,7 @@ class Ciudadanos extends CI_Controller {
 		$resource = $this->permisos_model->verify_recursos(ROL,COMPONENTE,$recurso);
 
 		if ($acceso == true) {
-			if ($resource == '1') {
+			if (!empty($resource)) {
 
 			$this->load->model('ciudadanos_model');
 			//$agregar = $this->ciudadanos_model->insert_entry();

@@ -75,6 +75,8 @@ $myPicture4->drawScale($scaleSettings);
 /* Draw a JPG object */ 
  $myPicture4->drawFromPNG(5,2,"logoGS_result.png");
 
+
+
 /* Write the chart legend */ 
 $myPicture4->drawLegend(380,12,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL)); 
 /* Turn on shadow computing */  
