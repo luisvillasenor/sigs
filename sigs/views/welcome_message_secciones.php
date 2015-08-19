@@ -31,17 +31,17 @@
 			<th>Municipios</th>
 			<th></th>
 			<?php foreach ($get_all_secciones as $item):?>
-			<form>
+			
 			  	<tr>
-			  		<td><input size="3" value="<?php echo $item->seccion; ?>"></td>
-			  		<td><textarea><?php echo $item->colonia; ?></textarea></td>
-			  		<td><input size="2" value="<?php echo $item->df; ?>"></td>
-			  		<td><input size="5" value="<?php echo $item->distritoUni; ?>"></td>
-			  		<td><input size="2" value="<?php echo $item->distritoNuevo; ?>"></td>
-			  		<td><textarea><?php echo $item->municipio; ?></textarea></td>
-			  		<td><button>Guardar</button></td>
+			  		<td><?php echo $item->seccion; ?></td>
+			  		<td><?php echo $item->colonia; ?></td>
+			  		<td><?php echo $item->df; ?></td>
+			  		<td><?php echo $item->distritoUni; ?></td>
+			  		<td><?php echo $item->distritoNuevo; ?></td>
+			  		<td><?php echo $item->municipio; ?></td>
+			  		<td></td>
 			  	</tr>
-		  	</form> 
+		  	
 			<?php endforeach;?>
 			
 		</table>
