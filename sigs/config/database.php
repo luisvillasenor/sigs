@@ -50,8 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';//sigs
-$db['default']['password'] = 'sECTUREd1';//pb56d8ztVX55B2GN
-$db['default']['database'] = 'sigs';
+$db['default']['password'] = 'lgva6773';//pb56d8ztVX55B2GN
+$db['default']['database'] = 'gestionsocial';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
