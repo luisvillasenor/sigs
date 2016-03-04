@@ -53,6 +53,7 @@ class Graficas extends CI_Controller {
  		  	$data['get_all_deps'] = $this->dependencias_model->get_all_deps();			
 			$this->load->view('header');
 			$this->load->view('navbar-default',$data);
+			#var_dump($data['grafica_status']); die();
 			$this->load->view('graficas_view',$data);
 			$this->load->view('footer');				
 		} else { die("You do not have permissions to read this resource"); }

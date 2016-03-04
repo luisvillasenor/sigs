@@ -373,11 +373,15 @@ public function fetch_rows($limit, $start) {
     }
 
     // Esta funcion se utiliza en el controler del ciudadano/actualizar
-    function update_solicitudes($ciudadano,$distrito)
+    function update_solicitudes($id_ciudadano = null,$distrito = null,$distritolocal = null)
     {
-        $data = array('geo' => $distrito );
-        $this->db->where('ciudadano_id',$ciudadano);
-        $this->db->update('solicitudes', $data);
+        if ( isset($id_ciudadano) AND isset($distrito) AND isset($distritolocal ) ) {
+            $data = array('geo' => $distrito, 'distritolocal' => $distritolocal);
+            $this->db->where('ciudadano_id',$id_ciudadano);
+            $this->db->update('solicitudes', $data);
+            return TRUE;
+        }
+        return FALSE;        
     }
 
     function update_status($status,$solicitud_id)

@@ -72,10 +72,10 @@ class Solicitudes extends CI_Controller {
 		} else { die("You do not have permissions to read this resource"); }
 	}
 
-	function nuevo($id)
+	function nuevo($id_cuidadano)
 	{
 		$data['onlyusername']=strstr($_SESSION['username'],'@',true);
-		$data['ciudadano_id']=$id;		
+		$data['ciudadano_id']=$id_cuidadano;		
 		$recurso = $this->uri->segment(2);
 		// obtiene el controler y metodo del segmento URL
 		$acceso = $this->permisos_model->verify_componente(ROL,COMPONENTE);
@@ -90,8 +90,8 @@ class Solicitudes extends CI_Controller {
  		  	$this->load->model('status_model');
 			$data['get_all_deps'] = $this->dependencias_model->get_all_deps();
 			$data['get_all_status'] = $this->status_model->get_all_status();			
-			$data['get_one_ciudadano'] = $this->ciudadanos_model->get_one_ciudadano($id);
-			$data['get_mis_solicitudes'] = $this->solicitudes_model->get_mis_solicitudes($id);
+			$data['get_one_ciudadano'] = $this->ciudadanos_model->get_one_ciudadano($id_cuidadano);
+			$data['get_mis_solicitudes'] = $this->solicitudes_model->get_mis_solicitudes($id_cuidadano);
 			//Guarda el registro en la base de datos		
 			$this->load->view('header');
 			$this->load->view('navbar-default',$data);

@@ -89,6 +89,28 @@ class Secciones extends CI_Controller {
 
 	}
 
+	public function show($seccion_id = null)
+	{
+			$this->load->model('secciones_model');
+			$get_distritolocal = $this->secciones_model->get_distritolocal($seccion_id);
+			foreach ($get_distritolocal as $disLocal) {
+				$distritolocal = $disLocal->distritoNuevo;
+				$df = $disLocal->df;
+			}
+			print $distritolocal;
+	}
+
+	public function showlocal($seccion_id = null)
+	{
+			$this->load->model('secciones_model');
+			$get_distritolocal = $this->secciones_model->get_distritolocal($seccion_id);
+			foreach ($get_distritolocal as $disLocal) {
+				$distritolocal = $disLocal->distritoNuevo;
+				$df = $disLocal->df;
+			}
+			print $df;
+	}
+
 
 }
 

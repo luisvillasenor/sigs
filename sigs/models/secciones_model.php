@@ -50,21 +50,21 @@ class Secciones_model extends CI_Model
                     case '01':
                         # code...
                         $this->db->order_by('colonia','asc');
-                        //$this->db->where('df',GEO);
+                        $this->db->where('df',GEO);
                         $query = $this->db->get('secciones');
                         return $query->result();
                         break;
                     case '02':
                         # code...
                         $this->db->order_by('colonia','asc');
-                        //$this->db->where('df',GEO);
+                        $this->db->where('df',GEO);
                         $query = $this->db->get('secciones');
                         return $query->result();
                         break;
                     case '03':
                         # code...
                         $this->db->order_by('colonia','asc');
-                        //$this->db->where('df',GEO);
+                        $this->db->where('df',GEO);
                         $query = $this->db->get('secciones');
                         return $query->result();
                         break;                    
@@ -256,17 +256,26 @@ class Secciones_model extends CI_Model
         $this->db->update('secciones', $data, array('id' => $_POST['id']));
     }
 
-function get_df($seccion_id){
-    $this->db->select('df');
-    $this->db->where('id',$seccion_id);
-    $this->db->limit(1);
-    $query = $this->db->get('secciones');
-    foreach ($query as $key => $value) {
-        $distrito = $value;
+    function get_df($seccion_id){
+        $this->db->select('df');
+        $this->db->where('id',$seccion_id);
+        $this->db->limit(1);
+        $query = $this->db->get('secciones');
+        foreach ($query as $key => $value) {
+            $distrito = $value;
+        }
         return $distrito;
     }
+
+    public function get_distritolocal($seccion_id = null){
+        $this->db->select('df,distritoNuevo');
+        $this->db->where('id',$seccion_id);
+        $this->db->limit(1);
+        $query = $this->db->get('secciones');
+        return $query->result();
+    }
     //return $query->result();
-}
+
 
 }
 ?>

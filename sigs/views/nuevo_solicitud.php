@@ -6,7 +6,7 @@
 <li>
 		<?php foreach ($get_one_ciudadano as $one) { ?>
 			<h1><?php echo "$one->nombreCompleto";?></h1>
-			<small>ID:<?php echo "$one->id";?></small>
+			<small>ID:<?php echo "$one->id_ciudadano";?></small>
 			<small>DF:<?php echo "$one->distrito";?></small>
 		<?php } ?>
 </li>           
@@ -37,7 +37,7 @@ Agregar Nueva <?php echo COMPONENTE ?>
 <div class="form-group">
 <label for="concepto" class="col-sm-2 control-label">concepto</label>
 <div class="col-sm-10">
-<textarea type="text" name="concepto" class="form-control" rows="5" id="concepto" placeholder="Escriba aqui la descripción de la solicitud"></textarea>
+<textarea type="text" name="concepto" class="form-control" rows="3" id="concepto" placeholder="Escriba aqui la descripción de la solicitud"></textarea>
 </div>
 </div>
 
@@ -87,11 +87,16 @@ Agregar Nueva <?php echo COMPONENTE ?>
 <?php foreach ($get_one_ciudadano as $one) { ?>
 	<input type="text" name="geo" class="form-control" id="geo" value="<?php echo $one->distrito;?>" readonly>
 <?php } ?>
-
-
 </div>
 </div>
-
+<div class="form-group">
+<label for="geo" class="col-sm-2 control-label">Distrito Local</label>
+<div class="col-sm-10">
+<?php foreach ($get_one_ciudadano as $one) { ?>
+	<input type="text" name="" class="form-control" id="" value="" readonly>
+<?php } ?>
+</div>
+</div>
 <div class="modal-footer">
 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 <button type="submit" class="btn btn-primary">Guardar</button>
@@ -115,7 +120,8 @@ Agregar Nueva <?php echo COMPONENTE ?>
 		<th>Concepto</th>
 		<th>Canalizado</th>
 		<th>Status</th>
-		<th>Distrito</th>
+		<th>Distrito Federal</th>
+		<th>Distrito Local</th>
 		<th>Acción</th>
 		</tr>
 			<?php
@@ -151,11 +157,13 @@ Agregar Nueva <?php echo COMPONENTE ?>
 				  		echo "<td>";
 				  	  	echo "$value->geo";		  	  	
 				  		echo "</td>";
-				  		echo "<td>";
-				  	  	echo "<a href='".base_url('solicitudes/editar')."/$value->id'>Ver</a>";		  	  	
+						echo "<td>";
+				  	  	echo "";		  	  	
 				  		echo "</td>";
 				  		echo "<td>";
-				  	  	echo "<a href='".base_url('gestiones/nuevo')."/$value->id'>Gestiones</a>";
+				  	  	echo "<a href='".base_url('solicitudes/editar')."/$value->id' class='btn btn-default btn-sm'>Editar Solicitud</a>";		  	  	
+				  		echo "<br>";
+				  	  	echo "<a href='".base_url('gestiones/nuevo')."/$value->id' class='btn btn-default btn-sm'>Ver Historial</a>";
 				  		echo "</td>";
 			  		echo "</tr>";
 			  }

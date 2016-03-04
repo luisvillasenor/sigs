@@ -27,7 +27,7 @@
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				        <h4 class="modal-title" id="myModalLabel">Agregar a un Nuevo Ciudadano</h4>
 				      </div>
-				 	  <form class="form-horizontal" method="POST" action="<?php echo base_url('ciudadanos/create');?>">
+				 	  <form name="nuevoeditciudadano" class="form-horizontal" method="POST" action="<?php echo base_url('ciudadanos/create');?>">
 				      <div class="modal-body">
 				      	  <div class="form-group">
 						    <label for="nombreCompleto" class="col-sm-2 control-label">Nombre</label>
@@ -42,25 +42,32 @@
 						    </div>
 						  </div>
 						  <div class="form-group">
-						    <label for="seccion" class="col-sm-2 control-label">Sección</label>
-						    <div class="col-sm-10">
-						      <select class="form-control" name="seccion">
-						      	<?php foreach ($get_all_secciones as $campo) : ?>
-								<option id="seccion" value="<?php echo $campo->id;?>"><?php echo $campo->seccion;?> - <?php echo $campo->colonia;?></option>  
-								<?php endforeach; ?>
-							</select>
-						    </div>
-						  </div>
-						  <div class="form-group">
 						    <label for="telefono" class="col-sm-2 control-label">Telefono</label>
 						    <div class="col-sm-10">
 						      <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono">
 						    </div>
 						  </div>
 						  <div class="form-group">
+						    <label for="id_seccion" class="col-sm-2 control-label">Sección</label>
+						    <div class="col-sm-10">
+						      <select class="form-control" name="id_seccion" id="id_seccion" onchange="obtenerDistritoLocal()">
+						      	<?php foreach ($get_all_secciones as $seccion) : ?>
+								<option value="<?php echo $seccion->id;?>"><?php echo $seccion->seccion;?> - <?php echo $seccion->colonia;?></option>  
+								<?php endforeach; ?>
+							</select>
+						    </div>
+						  </div>
+
+						  <div class="form-group">
+						    <label for="distritolocal" class="col-sm-2 control-label">Distrito Local</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" name="distritolocal" id="distritolocal" placeholder="distrito local" readonly>
+						    </div>
+						  </div>
+						  <div class="form-group">
 						    <label for="distrito" class="col-sm-2 control-label">Distrito Federal</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" name="distrito" id="distrito" value="<?php echo GEO;?>" placeholder="distrito">
+						      <input type="text" class="form-control" name="distrito" id="distrito" value="<?php echo GEO;?>" placeholder="distrito" readonly>
 						    </div>
 						  </div>			
 				      </div>
@@ -78,33 +85,34 @@
   </div>
 
   	<div class="row well">
+  		<div>Registos encontrados: <?php echo $total_rows; ?></div>
 	
 		<table class="table table-bordered">
 			<tr>
-			<th>ID</th>	
-			<th>nombreCompleto</th>
-			<th>Calle</th>
+			<th>Nombre Completo</th>
 			<th>Telefono</th>
+			<th>Calle</th>
+			<th>DF-DL-SEC</th>
 			<th>Accion</th>
 			</tr>
 				<?php
 				  foreach ($results as $value) {
 				  	# code...
 				  		echo "<tr>";		  	  	
-					  	  	echo "<td>";
-					  	  	echo "$value->id";		  	  	
-					  		echo "</td>";
 					  		echo "<td>";
-					  	  	echo "<a href='".base_url('ciudadanos/editar')."/$value->id'>$value->nombreCompleto</a>";		  	  	
-					  		echo "</td>";
-					  		echo "<td>";
-					  	  	echo "$value->calle";		  	  	
+					  	  	echo "<a href='".base_url('ciudadanos/editar')."/$value->id_ciudadano'>$value->nombreCompleto</a>";		  	  	
 					  		echo "</td>";
 					  		echo "<td>";
 					  	  	echo "$value->telefono";		  	  	
 					  		echo "</td>";
 					  		echo "<td>";
-					  	  	echo "<a href='".base_url('solicitudes/nuevo')."/$value->id'>Solicitudes</a>";		  	  	
+					  	  	echo "$value->calle";		  	  	
+					  		echo "</td>";
+					  		echo "<td>";
+					  	  	echo "$value->distrito - $value->distritolocal-$value->seccion";
+					  		echo "</td>";
+					  		echo "<td>";
+					  	  	echo "<a href='".base_url('solicitudes/nuevo')."/$value->id_ciudadano'>Solicitudes</a>";		  	  	
 					  		echo "</td>";
 					  		echo "<td>";
 				  		echo "</tr>";

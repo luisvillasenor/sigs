@@ -5,7 +5,7 @@
 <ul class="nav navbar-nav navbar-left">
 <li>
 	<?php foreach ($get_one_solicitud as $one) { ?>
-		<a href="<?php echo base_url('solicitudes/nuevo')."/$one->ciudadano_id";?>">Ciudadano: <?php echo "$one->ciudadano_id";?></a>
+		<a href="<?php echo base_url('solicitudes/nuevo')."/$one->ciudadano_id";?>" class="btn btn-default btn-sm">Regresar</a>
 	<?php } ?>
 </li>
 <li> 

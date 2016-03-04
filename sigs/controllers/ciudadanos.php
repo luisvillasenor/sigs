@@ -50,6 +50,9 @@ class Ciudadanos extends CI_Controller {
  		  	$this->load->model('ciudadanos_model');
  		  	$this->load->model('secciones_model');
 
+ 		  	$data['get_all_secciones'] = $this->secciones_model->get_all_secciones();
+ 		  	$data["total_rows"] = $this->ciudadanos_model->record_count();
+
  		  	$config["base_url"] = base_url() . "ciudadanos/index";
 	        $config["total_rows"] = $this->ciudadanos_model->record_count();
 	        $config["per_page"] = 10;
@@ -112,13 +115,21 @@ class Ciudadanos extends CI_Controller {
 			$this->load->model('ciudadanos_model');
 			$actualizar = $this->ciudadanos_model->update_entry();
 			//Guarda el registro en la base de datos
- 		  	$ciudadano = $this->input->post('id');
- 		  	$distrito = $this->input->post('distrito');
+ 		  	$id_ciudadano  = (isset($_POST['id_ciudadano'])) ? $this->input->post('id_ciudadano') : null ; 
+ 		  	$distrito 	   = (isset($_POST['distrito'])) ? $this->input->post('distrito') : null ; 
+ 		  	$distritolocal = (isset($_POST['distritolocal'])) ? $this->input->post('distritolocal') : null ; 
 
  		  	$this->load->model('solicitudes_model');
-			$actualizar = $this->solicitudes_model->update_solicitudes($ciudadano,$distrito);
+			$actualizar = $this->solicitudes_model->update_solicitudes($id_ciudadano,$distrito,$distritolocal);
+			if ( isset($actualizar) AND $actualizar == TRUE) {
+				$this->editar($id_ciudadano);
+			}
+				else{
+					echo "ERROR, regrese y corrija";
+					#$this->editar($id_ciudadano);
+				}
 
-		    $this->editar($ciudadano);		
+		    
 
 			}else { die("You do not have permissions to read this resource"); }					    
 		} else { die("You do not have permissions to read this resource"); }
@@ -126,7 +137,7 @@ class Ciudadanos extends CI_Controller {
 	    //redirect(base_url('ciudadanos/index'), 'refresh');
 	}
 
-	public function editar($id)
+	public function editar($id_ciudadano)
 	{
 		$recurso = $this->uri->segment(2);
 		// obtiene el controler y metodo del segmento URL
@@ -143,7 +154,7 @@ class Ciudadanos extends CI_Controller {
  		  	// Carga componentes permitidos
 			$this->load->model('secciones_model');
 			$data['get_all_secciones'] = $this->secciones_model->get_all_secciones();
- 		  	$data['get_one_ciudadano'] = $this->ciudadanos_model->get_one_ciudadano($id);
+ 		  	$data['get_one_ciudadano'] = $this->ciudadanos_model->get_one_ciudadano($id_ciudadano);
 			$this->load->view('header');
 			$this->load->view('navbar-default',$data);
 			$this->load->view('edit_ciudadanos',$data);

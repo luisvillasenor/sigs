@@ -2,10 +2,10 @@
 class Ciudadanos_model extends CI_Model 
 {
     // Definicion de variables iguales a los nombres de los campos de la tabla 
-    var $id = '';    
+    var $id_ciudadano = '';    
     var $nombreCompleto = '';
     var $calle = '';
-    var $seccion = '';
+    var $id_seccion = '';
     var $telefono = '';
     var $distrito = '';
     var $fecha_creacion = '';
@@ -21,14 +21,22 @@ class Ciudadanos_model extends CI_Model
         $this->load->helper('date');
     }
 /////////////////////////////////
-public function record_count() {
-        return $this->db->count_all('ciudadanos');
+public function record_count($distrito = GEO) {
+    if ( isset($distrito) ) {
+        $this->db->where('distrito',$distrito);
+        return $this->db->count_all_results('ciudadanos');
+    } else {
+        return $this->db->count_all_results('ciudadanos');
     }
+}
  
-public function fetch_rows($limit, $start) {
+public function fetch_rows($limit, $start,$distrito = GEO) {
+    $this->db->where('distrito',$distrito);
     $this->db->limit($limit, $start);
     $this->db->order_by('nombreCompleto','ASC');
-    $query = $this->db->get('ciudadanos');
+    $this->db->from('ciudadanos');
+    $this->db->join('secciones', 'secciones.id = ciudadanos.id_seccion','left');
+    $query = $this->db->get();
 
     if ($query->num_rows() > 0) {
         foreach ($query->result() as $row) {
@@ -207,9 +215,9 @@ public function fetch_rows($limit, $start) {
 
     }
 
-    function get_one_ciudadano($id)
+    function get_one_ciudadano($id_ciudadano)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id_ciudadano', $id_ciudadano);
         $this->db->limit(1);
         $query = $this->db->get('ciudadanos');
         return $query->result();
@@ -300,11 +308,12 @@ public function fetch_rows($limit, $start) {
 
     function insert_entry()
     {
-        $data['nombreCompleto'] = $_POST['nombreCompleto'];
-        $data['calle']          = $_POST['calle'];
-        $data['seccion']        = $_POST['seccion'];
-        $data['telefono']       = $_POST['telefono'];
-        $data['distrito']       = $_POST['distrito'];
+        $data['nombreCompleto'] = (isset($_POST['nombreCompleto'])) ? $this->input->post('nombreCompleto') : null ; 
+        $data['calle']          = (isset($_POST['calle'])) ? $this->input->post('calle') : null ; 
+        $data['id_seccion']     = (isset($_POST['id_seccion'])) ? $this->input->post('id_seccion') : null ; 
+        $data['telefono']       = (isset($_POST['telefono'])) ? $this->input->post('telefono') : null ; 
+        $data['distrito']       = (isset($_POST['distrito'])) ? $this->input->post('distrito') : null ; 
+        $data['distritolocal']  = (isset($_POST['distritolocal'])) ? $this->input->post('distritolocal') : null ; 
         $data['fecha_creacion'] = date('Y-m-d H:i:s');
         $data['user_creacion']  = USER;
         $data['fecha_act']      = date('Y-m-d H:i:s');
@@ -317,18 +326,19 @@ public function fetch_rows($limit, $start) {
 
     function update_entry()
     {
-        $data['id']             = $_POST['id'];
-        $data['nombreCompleto'] = $_POST['nombreCompleto'];
-        $data['calle']          = $_POST['calle'];
-        $data['seccion']        = $_POST['seccion'];
-        $data['telefono']       = $_POST['telefono'];
-        $data['distrito']       = $_POST['distrito'];
-        $data['fecha_creacion'] = $_POST['fecha_creacion'];
-        $data['user_creacion']  = $_POST['user_creacion'];
+        $data['id_ciudadano']   = (isset($_POST['id_ciudadano'])) ? $this->input->post('id_ciudadano') : null ; 
+        $data['nombreCompleto'] = (isset($_POST['nombreCompleto'])) ? $this->input->post('nombreCompleto') : null ; 
+        $data['calle']          = (isset($_POST['calle'])) ? $this->input->post('calle') : null ; 
+        $data['id_seccion']     = (isset($_POST['id_seccion'])) ? $this->input->post('id_seccion') : null ; 
+        $data['telefono']       = (isset($_POST['telefono'])) ? $this->input->post('telefono') : null ; 
+        $data['distrito']       = (isset($_POST['distrito'])) ? $this->input->post('distrito') : null ; 
+        $data['distritolocal']  = (isset($_POST['distritolocal'])) ? $this->input->post('distritolocal') : null ; 
+        $data['fecha_creacion'] = (isset($_POST['fecha_creacion'])) ? $this->input->post('fecha_creacion') : null ; 
+        $data['user_creacion']  = (isset($_POST['user_creacion'])) ? $this->input->post('user_creacion') : null ; 
         $data['fecha_act']      = date('Y-m-d H:i:s');
         $data['user_act']       = USER;
 
-        $this->db->update('ciudadanos', $data, array('id' => $_POST['id']));
+        $this->db->update('ciudadanos', $data, array('id_ciudadano' => $data['id_ciudadano']));
 
     }
 

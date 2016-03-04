@@ -79,6 +79,14 @@
 						    </div>
 						  </div>
 						  <div class="form-group">
+						    <label for="distrito" class="col-sm-2 control-label">distrito local</label>
+						    <div class="col-sm-10">
+						    <?php foreach ($get_one_solicitud as $one) { ?>
+								<input type="text" class="form-control" name="" id="" value="" placeholder="geo" readonly>
+							<?php } ?>
+						    </div>
+						  </div>
+						  <div class="form-group">
 						    <label for="user" class="col-sm-2 control-label">Gestor</label>
 						    <div class="col-sm-10">
 								<input type="text" class="form-control" name="user" id="user" value="<?php echo USER;?>" placeholder="user" readonly>
@@ -104,6 +112,8 @@
 	<table class="table table-condensed">
 		<tr>
 		<th>ID</th>		
+		<th>Distrito F</th>
+		<th>Distito L</th>
 		<th>Gestion</th>
 		<th>Fecha</th>
 		<th>Gestor</th>
@@ -115,6 +125,12 @@
 			  		echo "<tr>";		  	  	
 				  	  	echo "<td>";
 				  	  	echo "$value->id";		  	  	
+				  		echo "</td>";
+				  		echo "<td>";
+				  	  	echo "$value->distrito";		  	  	
+				  		echo "</td>";
+				  		echo "<td>";
+				  	  	echo "";		  	  	
 				  		echo "</td>";
 				  		echo "<td>";
 				  	  	echo "$value->concepto";		  	  	
