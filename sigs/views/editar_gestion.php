@@ -52,6 +52,12 @@
 							    </div>
 							</div>
 							<div class="form-group">
+							    <label for="distritolocal" class="col-sm-2 control-label">distrito local</label>
+							    <div class="col-sm-10">
+							      <input type="text" name="distritolocal" class="form-control" id="distritolocal" value="<?php echo $one->distritolocal;?>" readonly>
+							    </div>
+							</div>
+							<div class="form-group">
 							    <label for="solicitud_id" class="col-sm-2 control-label">Solicitud</label>
 							    <div class="col-sm-10">
 							      <input type="text" name="solicitud_id" class="form-control" id="solicitud_id" value="<?php echo $one->solicitud_id;?>" readonly>
@@ -81,6 +87,10 @@
 			Gestor: <?php echo "$one->user";?>
 			<br>
 			Gestion: <?php echo "$one->concepto";?>
+			<br>
+			df: <?php echo "$one->distrito";?>
+			<br>
+			dl: <?php echo "$one->distritolocal";?>
 
 		<?php } ?>
 

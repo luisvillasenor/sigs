@@ -93,7 +93,7 @@ Agregar Nueva <?php echo COMPONENTE ?>
 <label for="geo" class="col-sm-2 control-label">Distrito Local</label>
 <div class="col-sm-10">
 <?php foreach ($get_one_ciudadano as $one) { ?>
-	<input type="text" name="" class="form-control" id="" value="" readonly>
+	<input type="text" name="distritolocal" class="form-control" id="distritolocal" value="<?php echo $one->distritolocal;?>" readonly>
 <?php } ?>
 </div>
 </div>
@@ -158,12 +158,12 @@ Agregar Nueva <?php echo COMPONENTE ?>
 				  	  	echo "$value->geo";		  	  	
 				  		echo "</td>";
 						echo "<td>";
-				  	  	echo "";		  	  	
+				  	  	echo "$value->distritolocal";		  	  	
 				  		echo "</td>";
 				  		echo "<td>";
-				  	  	echo "<a href='".base_url('solicitudes/editar')."/$value->id' class='btn btn-default btn-sm'>Editar Solicitud</a>";		  	  	
+				  	  	echo "<a href='".base_url('solicitudes/editar')."/$value->id' class='btn btn-default btn-sm'>Actualizar Solicitud</a>";		  	  	
 				  		echo "<br>";
-				  	  	echo "<a href='".base_url('gestiones/nuevo')."/$value->id' class='btn btn-default btn-sm'>Ver Historial</a>";
+				  	  	echo "<a href='".base_url('gestiones/nuevo')."/$value->id' class='btn btn-default btn-sm'>Hacer Gestion</a>";
 				  		echo "</td>";
 			  		echo "</tr>";
 			  }

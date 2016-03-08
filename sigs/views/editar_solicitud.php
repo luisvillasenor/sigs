@@ -110,6 +110,12 @@ endforeach;
 <input type="text" name="geo" class="form-control" id="geo" value="<?php echo $solicitud->geo;?>" readonly>
 </div>
 </div>
+<div class="form-group">
+<label for="distritolocal" class="col-sm-2 control-label">Distrito Local</label>
+<div class="col-sm-10">
+<input type="text" name="distritolocal" class="form-control" id="distritolocal" value="<?php echo $solicitud->distritolocal;?>" readonly>
+</div>
+</div>
 <?php } ?>	
 </div>
 <div class="modal-footer">
@@ -192,6 +198,12 @@ endforeach;
 <label for="geo" class="col-sm-2 control-label">Distrito</label>
 <div class="col-sm-10">
 <input type="text" name="geo" class="form-control" id="geo" value="<?php echo $solicitud->geo;?>" readonly>
+</div>
+</div>
+<div class="form-group">
+<label for="distritolocal" class="col-sm-2 control-label">Distrito Local</label>
+<div class="col-sm-10">
+<input type="text" name="distritolocal" class="form-control" id="distritolocal" value="<?php echo $solicitud->distritolocal;?>" readonly>
 </div>
 </div>
 <?php } ?>

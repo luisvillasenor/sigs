@@ -159,11 +159,12 @@ class Gestiones_model extends CI_Model
     }
 
     function insert_entry(){
-        $data['concepto']     = $_POST['concepto'];
-        $data['fecha']        = date('Y-m-d H:i:s');
-        $data['solicitud_id'] = $_POST['solicitud_id'];
-        $data['distrito']     = $_POST['distrito'];
-        $data['user']         = USER;
+        $data['concepto']       = $_POST['concepto'];
+        $data['fecha']          = date('Y-m-d H:i:s');
+        $data['solicitud_id']   = $_POST['solicitud_id'];
+        $data['distrito']       = $_POST['distrito'];
+        $data['distritolocal']  = $_POST['distritolocal'];
+        $data['user']           = USER;
 
         $this->db->insert('gestiones', $data);
         //return $this->db->insert_id();
@@ -171,12 +172,13 @@ class Gestiones_model extends CI_Model
 
     function update_entry()
     {
-        $data['id']           = $_POST['id'];
-        $data['concepto']     = $_POST['concepto'];
-        $data['fecha']        = date('Y-m-d H:i:s');        
-        $data['distrito']     = $_POST['distrito'];
-        $data['solicitud_id'] = $_POST['solicitud_id'];
-        $data['user']         = USER;
+        $data['id']             = $_POST['id'];
+        $data['concepto']       = $_POST['concepto'];
+        $data['fecha']          = date('Y-m-d H:i:s');        
+        $data['distrito']       = $_POST['distrito'];
+        $data['distritolocal']  = $_POST['distritolocal'];
+        $data['solicitud_id']   = $_POST['solicitud_id'];
+        $data['user']           = USER;
 
         $this->db->update('gestiones', $data, array('id' => $_POST['id']));
     }

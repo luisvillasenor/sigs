@@ -79,10 +79,10 @@
 						    </div>
 						  </div>
 						  <div class="form-group">
-						    <label for="distrito" class="col-sm-2 control-label">distrito local</label>
+						    <label for="distritolocal" class="col-sm-2 control-label">distrito local</label>
 						    <div class="col-sm-10">
 						    <?php foreach ($get_one_solicitud as $one) { ?>
-								<input type="text" class="form-control" name="" id="" value="" placeholder="geo" readonly>
+								<input type="text" class="form-control" name="distritolocal" id="distritolocal" value="<?php echo "$one->distritolocal";?>" placeholder="distrito local" readonly>
 							<?php } ?>
 						    </div>
 						  </div>
@@ -130,7 +130,7 @@
 				  	  	echo "$value->distrito";		  	  	
 				  		echo "</td>";
 				  		echo "<td>";
-				  	  	echo "";		  	  	
+				  	  	echo "$value->distritolocal";		  	  	
 				  		echo "</td>";
 				  		echo "<td>";
 				  	  	echo "$value->concepto";		  	  	

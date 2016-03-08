@@ -334,18 +334,18 @@ public function fetch_rows($limit, $start) {
 
     function insert_entry()
     {
-        $data['folio']      = $_POST['folio'];
-        $data['concepto']  = $_POST['concepto'];
-        $data['fecha']      = date('Y-m-d H:i:s');
-        $data['clasificado'] = $_POST['clasificado'];
-        $data['canalizado']   = $_POST['canalizado'];
-        $data['geo']        = $_POST['geo'];
-        $data['user']        = $_POST['user'];
-        $data['status']       = $_POST['status'];
+        $data['folio']          = $_POST['folio'];
+        $data['concepto']       = $_POST['concepto'];
+        $data['fecha']          = date('Y-m-d H:i:s');
+        $data['clasificado']    = $_POST['clasificado'];
+        $data['canalizado']     = $_POST['canalizado'];
+        $data['geo']            = $_POST['geo'];
+        $data['distritolocal']  = $_POST['distritolocal'];
+        $data['user']           = $_POST['user'];
+        $data['status']         = $_POST['status'];
         $data['fecha_act']      = date('Y-m-d H:i:s');
         $data['user_act']       = USER;
-
-        $data['ciudadano_id'] = $_POST['ciudadano_id'];        
+        $data['ciudadano_id']   = $_POST['ciudadano_id'];        
 
         $this->db->insert('solicitudes', $data);
         return $this->db->insert_id();
@@ -361,12 +361,11 @@ public function fetch_rows($limit, $start) {
         $data['clasificado'] = $_POST['clasificado'];
         $data['canalizado']   = $_POST['canalizado'];
         $data['geo']        = $_POST['geo'];
+        $data['distritolocal']  = $_POST['distritolocal'];
         $data['user']        = $_POST['user'];
         $data['status']       = $_POST['status'];
         $data['fecha_act']      = date('Y-m-d H:i:s');
         $data['user_act']       = USER;
-
-
         $data['ciudadano_id'] = $_POST['ciudadano_id'];
 
         $this->db->update('solicitudes', $data, array('id' => $_POST['id']));
