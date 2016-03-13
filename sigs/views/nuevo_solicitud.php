@@ -6,7 +6,7 @@
 <li>
 		<?php foreach ($get_one_ciudadano as $one) { ?>
 			<h1><?php echo "$one->nombreCompleto";?></h1>
-			<small>ID:<?php echo "$one->id_ciudadano";?></small>
+			<small>ID: <a href="<?php echo base_url('ciudadanos/editar');?>/<?php echo "$one->id_ciudadano";?>"><?php echo "$one->id_ciudadano";?></a></small>
 			<small>DF:<?php echo "$one->distrito";?></small>
 		<?php } ?>
 </li>           

@@ -40,12 +40,12 @@ $myData4->setAxisName(0,"Número de Soicitudes");
       break;
   }
 foreach($get_all_status as $itemStatus):
-foreach($grafica_status as $item):
-  if ($itemStatus->status_id == $item->status) {
-    /* Add data in your dataset */ 
-    $myData4->addPoints(array(($item->total)),$itemStatus->status); 
-  }
-endforeach;
+  foreach($grafica_status as $item):
+    if ($itemStatus->status_id == $item->status) {
+      /* Add data in your dataset */ 
+      $myData4->addPoints(array(($item->total)),$itemStatus->status); 
+    }
+  endforeach;
 endforeach;
 /* Create a pChart object and associate your dataset */ 
 $myPicture4 = new pImage(800,330,$myData4);

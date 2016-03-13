@@ -91,7 +91,7 @@ Total de Solicitudes: <span class="badge"><?php echo $total_rows ?></span><p>
 				  		echo "</td>";
 				  		echo "<td>";
 				  	  	foreach ($get_all_ciudadanos as $ciud) : 
-				  			if ($ciud->id == $value->ciudadano_id) {
+				  			if ($ciud->id_ciudadano == $value->ciudadano_id) {
 				  				echo $ciud->nombreCompleto;	
 				  			}
 				  		endforeach;				  			  	  	

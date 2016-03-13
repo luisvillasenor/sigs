@@ -26,10 +26,14 @@ class Solicitudes_model extends CI_Model
     }
 
 /////////////////////////////////
-public function record_count() {
-        return $this->db->count_all('solicitudes');
+public function record_count($distrito = GEO) {
+    if ( isset($distrito) ) {
+        $this->db->where('geo',$distrito);
+        return $this->db->count_all_results('solicitudes');
+    } else {
+        return $this->db->count_all_results('solicitudes');
     }
- 
+} 
 public function fetch_rows($limit, $start) {
     $this->db->limit($limit, $start);
     $query = $this->db->get('solicitudes');
