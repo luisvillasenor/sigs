@@ -26,7 +26,7 @@ class Admin extends CI_Controller {
 	
 	public function index(){
 		
-		//echo sha1('BTR%08nt'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
+		//echo sha1('<LGVa6@01'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
 		
 		if ( isset($_SESSION['username']) == NULL){
 			$this->load->view('header');
@@ -79,17 +79,17 @@ class Admin extends CI_Controller {
 				$this->admin_model->up_date($clean_email_address);
 
 				$rol3['verify_rol3'] = $this->admin_model->verify_rol($clean_email_address,$clean_password);
+				$clean_rol = '';
 				foreach ($rol3['verify_rol3'] as $key3 => $value3) {
 
 					if ($key3 == 'rol') {
 						# code...
 						$clean_rol = $value3;
 					}
-					
+				}
+				#var_dump($clean_rol); die();	
 
 					switch ($clean_rol) {
-						
-
 						case 'Candidato':
 							$_SESSION['username'] = $clean_email_address;
 							$_SESSION['rol'] = 'Candidato';
@@ -148,7 +148,7 @@ class Admin extends CI_Controller {
 							//$this->logout();
 							break;
 					}
-				}
+				
 
 			} else {
 

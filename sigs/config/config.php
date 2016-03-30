@@ -15,6 +15,7 @@
 |
 */
 $config['base_url']	= 'http://gestionsocial.localhost/sigs';
+#$config['base_url']	= 'http://gestionsocial.iceberg9.com/sigs';
 
 /*
 |--------------------------------------------------------------------------

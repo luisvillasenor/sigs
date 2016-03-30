@@ -693,7 +693,7 @@ public function fetch_rows($limit, $start) {
 
     }
 
-     function grafica_status()
+     function grafica_status($distritolocal = null)
     {
         switch (ROL) {
             case 'Capturista':
@@ -713,22 +713,46 @@ public function fetch_rows($limit, $start) {
                 # code...
                 switch (GEO) {
                     case '01':
-                        $this->db->select('status,count(*) as total');
-                        $this->db->where('geo','01');
+                        if ( isset($distritolocal) ) {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                            $this->db->where('distritolocal',$distritolocal);
+                        } else {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                        }
                         $this->db->group_by("status");
                         $query = $this->db->get('solicitudes');
                         return $query->result();
                         break;
                     case '02':
-                        $this->db->select('status,count(*) as total');
-                        $this->db->where('geo','02');
+                        if ( isset($distritolocal) ) {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                            $this->db->where('distritolocal',$distritolocal);
+                        } else {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                        }
                         $this->db->group_by("status");
                         $query = $this->db->get('solicitudes');
                         return $query->result();
                         break;
                     case '03':
-                        $this->db->select('status,count(*) as total');
-                        $this->db->where('geo','03');
+                        if ( isset($distritolocal) ) {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                            $this->db->where('distritolocal',$distritolocal);
+                        } else {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                        }
                         $this->db->group_by("status");
                         $query = $this->db->get('solicitudes');
                         return $query->result();
@@ -738,22 +762,46 @@ public function fetch_rows($limit, $start) {
                 # code...
                 switch (GEO) {
                     case '01':
-                        $this->db->select('status,count(*) as total');
-                        $this->db->where('geo','01');
+                        if ( isset($distritolocal) ) {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                            $this->db->where('distritolocal',$distritolocal);
+                        } else {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                        }
                         $this->db->group_by("status");
                         $query = $this->db->get('solicitudes');
                         return $query->result();
                         break;
                     case '02':
-                        $this->db->select('status,count(*) as total');
-                        $this->db->where('geo','02');
+                        if ( isset($distritolocal) ) {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                            $this->db->where('distritolocal',$distritolocal);
+                        } else {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                        }
                         $this->db->group_by("status");
                         $query = $this->db->get('solicitudes');
                         return $query->result();
                         break;
                     case '03':
-                        $this->db->select('status,count(*) as total');
-                        $this->db->where('geo','03');
+                        if ( isset($distritolocal) ) {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                            $this->db->where('distritolocal',$distritolocal);
+                        } else {
+                            # code...
+                            $this->db->select('status,count(*) as total');
+                            $this->db->where('geo',GEO);
+                        }
                         $this->db->group_by("status");
                         $query = $this->db->get('solicitudes');
                         return $query->result();

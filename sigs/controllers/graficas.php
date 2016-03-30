@@ -21,7 +21,7 @@ class Graficas extends CI_Controller {
 		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
 		session_start();
 
-		if ( isset($_SESSION['username']) == NULL ){
+		if ( isset($_SESSION['username']) == NULL ){ 
 			redirect(base_url('admin/logout'), 'refresh');
 		}
 
@@ -48,7 +48,22 @@ class Graficas extends CI_Controller {
  		  	//$data['grafica_seccion'] = $this->solicitudes_model->grafica_seccion();
  		  	//$data['grafica_clasificados'] = $this->solicitudes_model->grafica_clasificados();
  		  	//$data['grafica_canalizados'] = $this->solicitudes_model->grafica_canalizados();
- 		  	$data['grafica_status'] = $this->solicitudes_model->grafica_status();
+ 		  	
+ 		  	$distritolocal = explode("_", USER);
+ 		  	$resultado = count($distritolocal);
+ 		  	
+ 		  	#var_dump($data['distritolocal']); die();
+ 		  	if ($resultado <= 1 ) {
+ 		  	 	# code...
+ 		  	 	$distritolocal = null;
+ 		  	 	$data['distritolocal'] = null;
+ 		  	}
+ 		  		else {
+ 		  			$distritolocal = $distritolocal[1];
+ 		  			$data['distritolocal'] = $distritolocal;
+ 		  		} 
+
+ 		  	$data['grafica_status'] = $this->solicitudes_model->grafica_status($distritolocal);
  		  	$data['get_all_status'] = $this->status_model->get_all_status();
  		  	$data['get_all_deps'] = $this->dependencias_model->get_all_deps();			
 			$this->load->view('header');

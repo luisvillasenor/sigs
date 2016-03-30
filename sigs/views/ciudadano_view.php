@@ -80,16 +80,16 @@
 			  	# code...
 			  		echo "<tr>";		  	  	
 				  	  	echo "<td>";
-				  	  	echo "$one->id";		  	  	
+				  	  	echo "$one->id_ciudadano";		  	  	
 				  		echo "</td>";
 				  		echo "<td>";
-				  	  	echo "<a href='editar/$one->id'>$one->nombreCompleto</a>";		  	  	
+				  	  	echo "<a href='editar/$one->id_ciudadano'>$one->nombreCompleto</a>";		  	  	
 				  		echo "</td>";
 				  		echo "<td>";?>
 			            Calle: <?php echo $one->calle; ?><br>
 			            <?php 
 			            foreach ($get_all_secciones as $secc) : 
-			                if ($one->seccion == $secc->id) { 
+			                if ($one->id_seccion == $secc->id) { 
 			                  echo "Col:";
 			                  echo $secc->colonia;
 			                  echo "<br>";
@@ -100,7 +100,7 @@
 			            endforeach;
           				echo "</td>";
 				  		echo "<td>";
-				  	  	echo "<a href='".base_url('solicitudes/nuevo')."/$one->id'>Solicitudes</a>";		  	  	
+				  	  	echo "<a href='".base_url('solicitudes/nuevo')."/$one->id_ciudadano'>Solicitudes</a>";		  	  	
 				  		echo "</td>";
 			  		echo "</tr>";
 			  }

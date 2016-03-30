@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';//sigs
-$db['default']['password'] = 'lgva6773';//pb56d8ztVX55B2GN
-$db['default']['database'] = 'gestionsocial';
+$db['default']['hostname'] = 'localhost';//internal-db.s202570.gridserver.com
+$db['default']['username'] = 'root';//db202570_luis
+$db['default']['password'] = 'lgva6773';//9o)*hynN*Q3
+$db['default']['database'] = 'gestionsocial';//db202570_gestionsocial
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

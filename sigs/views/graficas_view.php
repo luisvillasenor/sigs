@@ -14,7 +14,7 @@ include("pChart214/class/pPie.class.php");
 <?php
 /* Create your dataset object GRAFICA STATUS */ 
 $myData4 = new pData(); 
-$myData4->setAxisName(0,"Número de Soicitudes"); 
+$myData4->setAxisName(0,"Número de Solicitudes"); 
   switch (GEO) {
     case '01':
       $myData4->setSerieDescription("Labels","Distritos"); 
@@ -22,9 +22,19 @@ $myData4->setAxisName(0,"Número de Soicitudes");
       $myData4->setAbscissa("Labels");     
       break;
     case '02':
-      $myData4->setSerieDescription("Labels","Distritos"); 
-      $myData4->addPoints(array("Distrito 02"),"Labels");
-      $myData4->setAbscissa("Labels");     
+      if ( isset($distritolocal) ) {
+        # code...
+        $myData4->setSerieDescription("Labels","Distritos"); 
+        $myData4->addPoints(array("Distrito Local ".$distritolocal),"Labels");
+        $myData4->setAbscissa("Labels");     
+      } else {
+        # code...
+        $myData4->setSerieDescription("Labels","Distritos"); 
+        $myData4->addPoints(array("Distrito 02"),"Labels");
+        $myData4->setAbscissa("Labels");     
+      }
+      
+
       break;    
     case '03':
       $myData4->setSerieDescription("Labels","Distritos"); 
@@ -84,14 +94,24 @@ $myPicture4->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10
 /* Draw the chart */ 
 $Settings = array("DisplayPos"=>LABEL_POS_INSIDE,"DisplayValues"=>TRUE,"Rounded"=>FALSE,"Surrounding"=>30); 
 $myPicture4->drawBarChart($Settings); 
-/* Build the PNG file and send it to the web browser */ 
-$myPicture4->Render("pChart214/grafica_status.png");
+/* Build the PNG file and send it to the web browser */
+if ( isset($distritolocal) ) {
+   # code...
+  $grafica = "pChart214/grafica_status_".GEO."_".$distritolocal.".png" ;
+  $myPicture4->Render($grafica);
+ } else {
+   # code...
+  $grafica = "pChart214/grafica_status_".GEO."_".$distritolocal.".png" ;
+  $myPicture4->Render($grafica);
+ }
+
+
 ?>
 
 
 <div class="row well">
 <!-- GRAFICA STATUS -->
-<img src="<?php echo base_url();?>pChart214/grafica_status.png" width="100%">
+<img src="<?php echo base_url();?><?php echo $grafica;?>" width="100%">
 </div>
 
 
